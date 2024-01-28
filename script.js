@@ -42,18 +42,22 @@ function getResult(playerChoice, computerChoice) {
   // Otherwise human loses (aka set score to -1)
   // return score
 }
-let result = document.getElementById("result");
+
 function showResult(score, playerChoice, computerChoice) {
   // Hint: on a score of -1
   // You should do result.innerText = 'You Lose!'
   // Don't forget to grab the div with the 'result' id!
+  const resultDiv = document.getElementById("result");
+  const handsDiv = document.getElementById("hands");
+  const playerScoreDiv = document.getElementById("paper-score");
   if (score == -1) {
-    result.innerText = "You Lose!";
+    resultDiv.innerText = "You Lose!";
   } else if (score == 1) {
-    result.innerText = "You Win!";
+    resultDiv.innerText = "You Win!";
   } else {
-    result.innerText = "Draw!";
+    resultDiv.innerText = "Draw!";
   }
+  handsDiv.innerText = `👨${playerChoice} vs 🤖${computerChoice}`
 }
 let scoreTotal = {'playerChoice' : 0 , 'computerChoice' : 0 };
 function onClickRPS(playerChoice) {
@@ -71,7 +75,7 @@ function onClickRPS(playerChoice) {
   }
   console.log(scoring);
   console.log(scoreTotal);
-
+  showResult(scoring,playerChoice,computerCh);
 }
 
 // ** Make the RPS buttons actively listen for a click and do something once a click is detected **
